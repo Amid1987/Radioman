@@ -77,7 +77,7 @@ public class RadioStationTest {
         int actual = rad.getCurrentRadioStation();
         Assertions.assertEquals(expected, actual);
     }
-    @Test //кнопка next3(4)
+    @Test
     public void shouldNextRadioStation3() {
         Radio rad = new Radio();
         rad.setCurrentRadioStation(3);
@@ -162,14 +162,8 @@ public class RadioStationTest {
         int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
-    @Test
-    public void shouldMinVolume() {
-        Radio rad = new Radio();
-        rad.setToMinVolume();
-        int expected = 0;
-        int actual = rad.getCurrentVolume();
-        Assertions.assertEquals(expected, actual);
-    }
+
+
 }
 
 

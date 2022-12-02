@@ -1,56 +1,83 @@
 public class Radio {
     private int currentRadioStation;
     private int currentSoundVolume;
+    private int numberStation = 10;
 
-    public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation < 0) {
+    public Radio() {
+    }
+
+    public Radio(int numberStation) {
+        this.numberStation = numberStation;
+    }
+
+    public int getNumberStation() {
+        return numberStation;
+    }
+
+    public void setNumberStation(int numberStation) {
+        if (numberStation < 0) {
             return;
         }
-        if (currentRadioStation > 9) {
+        this.numberStation = numberStation;
+    }
+
+    public int getCurrentRadioStation() {
+        return currentRadioStation;
+    }
+
+    public void setCurrentRadioStation(int currentRadioStation) {
+        if (currentRadioStation > numberStation - 1) {
+            return;
+        }
+        if (currentRadioStation < 0) {
             return;
         }
         this.currentRadioStation = currentRadioStation;
     }
+
     public void nextRadioStation() {
-        if (currentRadioStation < 9) {
-            currentRadioStation = currentRadioStation + 1;
+        if (currentRadioStation < numberStation - 1) {
+            currentRadioStation++;
         } else {
-            currentRadioStation = 9;
+            currentRadioStation = 0;
         }
     }
+
     public void prevRadioStation() {
         if (currentRadioStation > 0) {
-            currentRadioStation = currentRadioStation - 1;
+
+            currentRadioStation--;
         } else {
-            currentRadioStation = 9;
+            currentRadioStation = numberStation - 1;
         }
     }
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
+
+    public int getCurrentVolume() {
+        return currentSoundVolume;
     }
-    public void setCurrentSoundVolume(int currentSoundVolume) {
-        if (currentSoundVolume < 0) {
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > 100) {
             return;
         }
-        if (currentSoundVolume > 10) {
+        if (currentVolume < 0) {
             return;
         }
         this.currentSoundVolume = currentSoundVolume;
     }
-    public void setToMaxVolume() {
-        currentSoundVolume = 10;
-    }
-    public void setToMinVolume() {
-        currentSoundVolume = 0;
-    }
-    public int getCurrentSoundVolume() {
-        return currentSoundVolume;
+
+
+    //Увеличение громкости
+    public void increaseVolume() {
+        if (currentSoundVolume < 100) {
+            currentSoundVolume++;
+        }
     }
 
-    public void setCurrentVolume(int i) {
-    }
-
-    public int getCurrentVolume() {
-        return 0;
+    //Уменьшение громкости
+    public void decreaseVolume() {
+        if (currentSoundVolume > 0) {
+        }
+        currentSoundVolume--;
     }
 }
